@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
 app.get("/cheese", async (req, res) => {
   try {
     // send all cheese
-    res.json(await People.find({}));
+    res.json(await Cheese.find({}));
   } catch (error) {
     //send error
     res.status(400).json(error);
@@ -81,7 +81,7 @@ app.post("/cheese", async (req, res) => {
 // CHEESE UPDATE ROUTE
 app.put("/cheese/:id", async (req, res) => {
   try {
-    // send all people
+    // send all cheese
     res.json(
       await Cheese.findByIdAndUpdate(req.params.id, req.body, { new: true })
     );
@@ -91,11 +91,11 @@ app.put("/cheese/:id", async (req, res) => {
   }
 });
 
-// CHEESE CREATE ROUTE
+// CHEESE DELETE ROUTE
 app.delete("/cheese/:id", async (req, res) => {
   try {
     // send all people
-    res.json(await People.findByIdAndRemove(req.params.id));
+    res.json(await Cheese.findByIdAndRemove(req.params.id));
   } catch (error) {
     //send error
     res.status(400).json(error);
