@@ -56,6 +56,15 @@ app.get("/", (req, res) => {
   res.send("hello world");
 });
 
+
+// MIDDLEWARE
+// to prevent cors errors, open access to all origins
+app.use(cors()); 
+// logging
+app.use(morgan("dev")); 
+// parse json bodies
+app.use(express.json()); 
+
 // CHEESE INDEX ROUTE
 app.get("/cheese", async (req, res) => {
   try {
@@ -94,7 +103,7 @@ app.put("/cheese/:id", async (req, res) => {
 // CHEESE DELETE ROUTE
 app.delete("/cheese/:id", async (req, res) => {
   try {
-    // send all people
+    // send all the cheese
     res.json(await Cheese.findByIdAndRemove(req.params.id));
   } catch (error) {
     //send error
