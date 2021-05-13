@@ -57,14 +57,6 @@ app.get("/", (req, res) => {
 });
 
 
-// MIDDLEWARE
-// to prevent cors errors, open access to all origins
-app.use(cors()); 
-// logging
-app.use(morgan("dev")); 
-// parse json bodies
-app.use(express.json()); 
-
 // CHEESE INDEX ROUTE
 app.get("/cheese", async (req, res) => {
   try {
